@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./game.css"; // Adjust if your CSS file is in another location
-
+import "./game.css"; 
+//simon sid and simon didnt say
 const buttonColours = ["red", "blue", "green", "yellow"];
 
 export default function Game() {
