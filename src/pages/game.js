@@ -9,6 +9,7 @@ export default function Game() {
   const [gamePattern, setGamePattern] = useState([]);
   const [userPattern, setUserPattern] = useState([]);
   const [clickIndex, setClickIndex] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     if (userPattern.length === 0) return;
@@ -27,6 +28,16 @@ export default function Game() {
       }, 1000);
     }
   }, [userPattern]);
+
+  useEffect(() => {
+    if (gamePattern.length > 0) {
+      const latestColour = gamePattern[gamePattern.length - 1];
+      setTimeout(() => {
+        flashButton(latestColour);
+        playSound(latestColour);
+      }, 500); // slight delay to ensure DOM is ready
+    }
+  }, [gamePattern]);
 
   const startGame = () => {
     if (!started) {
@@ -70,6 +81,7 @@ export default function Game() {
     document.body.classList.add("game-over");
     setTimeout(() => {
       document.body.classList.remove("game-over");
+      setIsGameOver(true);  // Show popup
     }, 200);
     setStarted(false);
     setLevel(0);
@@ -78,15 +90,7 @@ export default function Game() {
     setClickIndex(0);
   };
 
-  useEffect(() => {
-    if (gamePattern.length > 0) {
-      const latestColour = gamePattern[gamePattern.length - 1];
-      setTimeout(() => {
-        flashButton(latestColour);
-        playSound(latestColour);
-      }, 500); // slight delay to ensure DOM is ready
-    }
-  }, [gamePattern]);
+
 
   return (
     <div className="container">
@@ -103,13 +107,26 @@ export default function Game() {
           <div
             key={color}
             id={color}
-            className={`btn ${color} ${!started ? "disabled" : ""}`}
+            className={`btn ${color} ${!started || isGameOver ? "disabled" : ""}`}
             onClick={() => {
               if (started) handleClick(color);
             }}
           ></div>
         ))}
       </div>
+      {isGameOver && (
+        <div className="popup-overlay">
+          <div className="popup">
+            <h2 style={{color: "#011F3F"}}>Game Over</h2>
+            <button style={{fontFamily: "'Press Start 2P', cursive"}} onClick={() => {
+              setIsGameOver(false);
+              setStarted(false);
+            }}>
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

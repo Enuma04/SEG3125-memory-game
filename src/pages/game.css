@@ -70,3 +70,39 @@ body {
   font-size: 1rem;
   color: #FEF2BF;
 }
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup {
+  background: #FEF2BF;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(53, 54, 77, 0.3);
+}
+
+.popup button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: #011F3F;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #45a049;
+}
