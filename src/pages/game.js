@@ -42,8 +42,7 @@ export default function Game() {
     setUserPattern([]);
     setClickIndex(0);
     setLevel((prev) => prev + 1);
-    flashButton(randomColour);
-    playSound(randomColour);
+    
   };
 
   const handleClick = (colour) => {
@@ -78,6 +77,16 @@ export default function Game() {
     setUserPattern([]);
     setClickIndex(0);
   };
+
+  useEffect(() => {
+    if (gamePattern.length > 0) {
+      const latestColour = gamePattern[gamePattern.length - 1];
+      setTimeout(() => {
+        flashButton(latestColour);
+        playSound(latestColour);
+      }, 500); // slight delay to ensure DOM is ready
+    }
+  }, [gamePattern]);
 
   return (
     <div className="container">
