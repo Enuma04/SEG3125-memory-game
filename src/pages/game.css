@@ -58,3 +58,14 @@ body {
   background-color: red !important;
   transition: background-color 0.2s ease;
 }
+
+.start-button
+{
+  padding: 2%;
+  border: 5px, solid;
+  border-radius: 10%;
+  background: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #FEF2BF;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./game.css"; 
-//simon sid and simon didnt say
+import "./game.css";
+
 const buttonColours = ["red", "blue", "green", "yellow"];
 
 export default function Game() {
@@ -9,17 +9,6 @@ export default function Game() {
   const [gamePattern, setGamePattern] = useState([]);
   const [userPattern, setUserPattern] = useState([]);
   const [clickIndex, setClickIndex] = useState(0);
-
-  useEffect(() => {
-    const handleKeyPress = () => {
-      if (!started) {
-        setStarted(true);
-        nextSequence();
-      }
-    };
-    document.addEventListener("keydown", handleKeyPress);
-    return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [started]);
 
   useEffect(() => {
     if (userPattern.length === 0) return;
@@ -38,6 +27,13 @@ export default function Game() {
       }, 1000);
     }
   }, [userPattern]);
+
+  const startGame = () => {
+    if (!started) {
+      setStarted(true);
+      nextSequence();
+    }
+  };
 
   const nextSequence = () => {
     const randomColour =
@@ -86,15 +82,22 @@ export default function Game() {
   return (
     <div className="container">
       <h1 id="level-title">
-        {started ? `Level ${level}` : "Press A Key to Start"}
+        {started ? `Level ${level}` : "Memory Game"}
       </h1>
+      {!started && (
+        <button className="start-button" onClick={startGame}>
+          Start
+        </button>
+      )}
       <div className="row">
         {buttonColours.map((color) => (
           <div
             key={color}
             id={color}
-            className={`btn ${color}`}
-            onClick={() => handleClick(color)}
+            className={`btn ${color} ${!started ? "disabled" : ""}`}
+            onClick={() => {
+              if (started) handleClick(color);
+            }}
           ></div>
         ))}
       </div>
