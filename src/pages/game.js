@@ -13,6 +13,7 @@ export default function Game() {
   const [difficulty, setDifficulty] = useState(1);
   const [theme, setTheme] = useState("retro");
   const [showFullSequence, setShowFullSequence] = useState(true);
+  const [sequencePlaying, setSequencePlaying] = useState(false);
 
   const handleDifficultyChange = (e) => {
     setDifficulty(parseInt(e.target.value));
@@ -31,13 +32,18 @@ export default function Game() {
 
 
   const playSequence = (sequence) => {
-  sequence.forEach((color, index) => {
+    setSequencePlaying(true);
+    sequence.forEach((color, index) => {
+      setTimeout(() => {
+          flashButton(color);
+          playSound(color);
+      }, index * 600);
+    });
     setTimeout(() => {
-      flashButton(color);
-      playSound(color);
-    }, index * 600); 
-  });
-};
+      setSequencePlaying(false);
+    }, sequence.length * 600);
+
+  };
 
   const startGame = () => {
     if (!started) {
@@ -68,6 +74,7 @@ export default function Game() {
   };
 
   const handleClick = (colour) => {
+    if (sequencePlaying || !started || isGameOver) return;
     const updatedUserPattern = [...userPattern, colour];
     setUserPattern(updatedUserPattern);
     setClickIndex((prev) => prev + 1);
