@@ -1,6 +1,5 @@
 body {
   text-align: center;
-  background-color: #011F3F;
   margin: 0;
   font-family: 'Press Start 2P', cursive;
 }
@@ -17,6 +16,20 @@ body {
   margin: auto;
 }
 
+/* Theme: Retro */
+.container.retro {
+  color: #FEF2BF;
+}
+
+/* Theme: Neon */
+.container.neon {
+  color: #39ff14;
+}
+
+.container.neon #level-title {
+  color: #39ff14;
+}
+
 .row {
   display: flex;
   justify-content: center;
@@ -31,27 +44,31 @@ body {
   border: 10px solid black;
   border-radius: 20%;
   cursor: pointer;
+  transition: transform 0.1s;
 }
 
 .red {
   background-color: red;
 }
-
 .green {
   background-color: green;
 }
-
 .blue {
   background-color: blue;
 }
-
 .yellow {
   background-color: yellow;
 }
 
+.container.neon .btn {
+  border-color: #39ff14;
+  box-shadow: 0 0 20px #39ff14;
+}
+
 .pressed {
   box-shadow: 0 0 20px white;
-  background-color: grey;
+  background-color: grey !important;
+  transform: scale(0.95);
 }
 
 .game-over {
@@ -59,16 +76,34 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.start-button
-{
-  padding: 2%;
-  margin-top: 5%;
-  border: 5px, solid;
-  border-radius: 10%;
+.start-button,
+select {
+  padding: 1em 2em;
+  margin: 2% 1%;
+  border: 3px solid #FEF2BF;
+  border-radius: 12px;
   background: none;
   font-family: 'Press Start 2P', cursive;
   font-size: 1rem;
   color: #FEF2BF;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #011F3F;
+  color: white;
+}
+
+.container.neon .start-button,
+.container.neon select {
+  border-color: #39ff14;
+  color: #39ff14;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.container.neon select option {
+  background-color: black;
+  color: #39ff14;
 }
 
 .popup-overlay {
@@ -106,3 +141,32 @@ body {
 .popup button:hover {
   background-color: #45a049;
 }
+
+body.retro {
+  background-color: #011F3F;
+  color: #FEF2BF;
+}
+
+body.neon {
+  background-color: #000000;
+  color: #39ff14;
+}
+
+.config-group {
+  margin-top: 2em;
+  color: #FEF2BF;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.config-group label {
+  flex-basis: 100%; 
+  text-align: center;
+}
+
+.container.neon .config-group {
+  color: #39ff14;
+}
+
