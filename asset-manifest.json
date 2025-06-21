@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SEG3125-memory-game/static/css/main.3c9cf655.css",
+    "main.js": "/SEG3125-memory-game/static/js/main.c617328e.js",
+    "static/js/453.58d809e6.chunk.js": "/SEG3125-memory-game/static/js/453.58d809e6.chunk.js",
+    "index.html": "/SEG3125-memory-game/index.html",
+    "main.3c9cf655.css.map": "/SEG3125-memory-game/static/css/main.3c9cf655.css.map",
+    "main.c617328e.js.map": "/SEG3125-memory-game/static/js/main.c617328e.js.map",
+    "453.58d809e6.chunk.js.map": "/SEG3125-memory-game/static/js/453.58d809e6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3c9cf655.css",
+    "static/js/main.c617328e.js"
+  ]
+}
