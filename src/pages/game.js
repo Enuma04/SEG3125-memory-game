@@ -92,7 +92,7 @@ export default function Game() {
   };
 
   const playSound = (name) => {
-    const audio = new Audio(`/sounds/${name}.mp3`);
+    const audio = new Audio(`${process.env.PUBLIC_URL}/sounds/${name}.mp3`);
     audio.play();
   };
 
