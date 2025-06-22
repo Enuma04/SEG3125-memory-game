@@ -122,7 +122,7 @@ export default function Game() {
   return (
     <div className={`container ${theme}`}>
       <h1 id="level-title">
-        {started ? `Level ${level}` : "Memory Game"}
+        {started ? `Level ${level}` : "Recall Rush"}
       </h1>
       {!started && (
         <div className="config-group">
